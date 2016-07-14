@@ -1,0 +1,241 @@
+
+= NewRelic Connector
+:keywords: NewRelic
+
+The NewRelic Connector facilitates connections between Anypoint Studio and NewRelic Application. NewRelic Application does performance monitoring of Browserapplications,mobile applications and as well as servers.
+
+Sign Up for New Relic
+
+
+
+*Release Notes:* link:/release-notes/SparkReleaseNotes.adoc[Link to Release Notes]
+
+////
+Note: existing MuleSoft documentation should be copied from right-hand column of link:https://github.com/mulesoft/mulesoft-docs/blob/master/links.csv. Links should always follow "link:"
+////
+
+---
+
+== Contents:
+
+:toc:
+---
+
+== Introduction
+
+The NewRelic Connector facilitates connections between Anypoint Studio and NewRelic Application.The NewRelic Connector facilitates connections between Anypoint Studio and NewRelic Application. NewRelic Application does performance monitoring of Browserapplications,mobile applications and as well as servers.
+
+Quickly, easily and securely extend the capabilities of Cisco Spark application throughout the enterprise with the Anypoint CiscoSpark connector from MuleSoft. The Anypoint CiscoSpark connector makes it simple to manage teams, rooms, send and receive files and instant workspaces for teams without having to interface with the Cisco Spark platform directly. +
+
+CiscoSpark Connector Operations +
+
+1. Get Applications +
+This method is used to list the applications details to which the authenticated user belongs. +
+2. Get Users List +
+This operation is used to list all the users to which the authenticated user belongs.  +
+3. Get Metric Names +
+This operation is used to list of known metrics and their value names for the given resource. +
+4. Get ApplicationInstanceList +
+This operation is used to get ApplicationInstanceList by application id. +
+5. Get Servers List +
+This operation is returns a paginated list of the Servers. +
+6. Get Host List +
+This operation used to list Hosts associated with the given application.The time range for summary data is the last 10 minutes.  +
+7. Get Browser Applications List +
+This operation is used to list browser applications to which the authenticated user belongs. + 
+8. Update ApplicationName +
+This operation is used to update the application name by application id and sever details. +
+9. Get UserDetails By Id +
+This operation is used list the user details like name,email address and some basic information of the user to which the authenticated user belongs to. +
+
+=== Prerequisites
+
+ This document assumes that you are familiar with Mule,Anypoint connectors and the Anypoint Studio Interface. To increase your familiarity with Studio, consider completing one or more Anypoint Studio Tutorials. Further, this page assumes that you have a basic understanding of Mule flows and Mule Global Elements.
+This document describes implementation examples within the context of Anypoint Studio, Mule ESB’s graphical user interface, and, also includes configuration details for doing the same in the XML Editor.
+
+=== Requirements
+
+•	Windows 7 64-bit +
+•	Mule Soft Software - +
+          Anypoint Studio - Tooling for Mule ESB. +
+          Version: 5.3.2. +
+          Build Id: 201510191606. +
+
+•	Install JDK 7 for DevKit 3.6 or 3.7. +
+
+
+=== Compatibility Matrix
+The NewRelic Connector is compatible with:
+
+Application/Service	     Version
+Mule Run-time	3.7.0 or later
+
+
+
+---
+
+== Installing and Configuring
+
+=== Installing
+
+You can install a connector in Anypoint Studio using the instructions in Installing a Connector from Anypoint Exchange
+As we can see in the image below the Cisco Tropo Connector is available in connectors palette.
+image::palette.jpg[]
+
+=== Configuring
+To use the NewRelic Connector in your Mule application, you must configure:
+•	A global NewRelic element to be used by all the NewRelic connectors in the application (read more about global elements in Mule).
+•	Parameters of each NewRelic Connector instance in the flow.
+
+Follow these steps to create a global NewRelic configuration in a Mule application:
+    
+1.	 Click the Global Elements tab at the base of the canvas, then click Create
+2.	 In the Choose Global Type wizard, use the filter to locate and select,
+      NewRelic configuration then click OK.
+3.	Configure the parameters according to the instructions shown in the below image.
+image::configuration.jpg[]
+|===
+|Field	|Description
+
+|Name	|Enter a name for the configuration so it can be referenced later 
+
+|Authorization       	|Authorization Token for connecting and loggin into NewRelic
+
+
+|URL		|https://api.ciscospark.com/v1
+|===
+
+
+4.Click OK to save the global connector configurations. +
+5.Return to the Message Flow tab in Studio. +
+
+---
+
+
+
+== Using This Connector
+
+Follow these steps to configure the parameters of a NewRelic Connector in the flow:   
+
+1.	Drag the NewRelic Connector onto the canvas, then select it to open the properties editor. +
+2.	Configure the connector’s parameters according to the table below. +
+|===
+|Field	|Description
+|Display Name	|Enter a unique label for the connector in your application.
+|Connector Configuration	|Connect to a global element linked to this connector. Global elements encapsulate reusable data about the connection to the target resource or service. Select the global NewRelic connector element that you created in the previous steps.
+|Operation	|Select the action this component must perform:
+ Get Applications,Get Users List,Get Metric Names,Get ApplicationInstanceList,Get Servers List,Get Host List,Get Browser Applications List,Update ApplicationName,Get UserDetails By Id
+|General	|Reference or expression: Select this option to define the parameters based on expression.
+Define Attributes: Select this option to define the values manually.
+|===
+
+3.	Click the blank space on the canvas to save your configurations. +
+  
+
+
+
+
+---
+
+== Example Use Case
+In this example flow, We are Getting the list of applications monitoring by newrelic account.
+===  Anypoint Studio Visual Editor | XML Editor
+
+Explain how to create this case with  Anypoint Studio  visual editor and XML editor +
+
+
+[tab,title="Studio Visual Editor"]
+....
+[tab content goes here]
+Create a new project by clicking New > Mule Project >Project Name: newrelicapplication.
+1. Drag an HTTP connector into sparkroomcreateapplication flow. Open the connector’s properties editor.
+2. Click on the + icon shown in the image below.
+image::httpProperties.jpg[]
+3. The Global Element Properties window of HTTP Listener Configuration opens. Enter 8081 for Port as shown below and click on 'Ok'.
+image::httpGlobalProperties.jpg[]
+4. The new flow is now reachable through the path http://localhost:8081 from the local system.
+5. Drag CiscoSpark connector into sparkroomcreateapplication flow.
+6. Configure the CiscoSpark connector according to the table below.
+
+|===
+|Field	|Description
+|Display Name	|CiscoSpark.
+|Connector Configuration	|select the global configuration created earlier.
+|Operation	|Create Rooms
+ |General	|Select Define Attributes:
+|			|Title|MuleTestroom
+|			|Members| None
+|===
+
+7. Drag a Object to Json transformer to the flow.
+8. Save it.
+
+
+[tab,title="XML Editor"]
+....
+1. Add a CiscoSpark:config global element to your project, then configure its attributes according to the table below (see code below for a complete sample).+
+ <CiscoSpark:config name="CiscoSpark__Configuration" authorization="Bearer ODY5MDBiYjctNDY4NS00ODI0LThhZjktNTUxMTcyNGI3OWMyZjRiNWRhM2MtZmZk" doc:name="CiscoSpark: Configuration"/>
+
+|===
+|Attribute|Value
+|name|CiscoSpark__Configuration
+|authorization|<Auth Token>
+|===
+2. Add a http:listener-config global element to you project +
+
+3. Create a Mule flow with an HTTP endpoint, configuring the endpoint according to the table below (see code below for a complete sample). +
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
+	
+|===
+|Attribute|Value
+|name|HTTP_Listener_Configuration
+|host|0.0.0.0
+|port|8081
+|===
+
+4. Add a CiscoSparkConnector to your muleflow after the http endpoint according to the table below
+		<CiscoSpark:create-rooms config-ref="CiscoSpark__Configuration" doc:name="CiscoSpark">
+            <CiscoSpark:rooms-post-request title="MuleTestRoom"/>
+        </CiscoSpark:create-rooms>
+|===
+|Attribute|Value
+|config-ref|CiscoSpark__Configuration
+|operation|create-rooms
+|title|MuleTestRoom
+|===
+
+5. Add a Object to Json transformer to your muleflow after the CiscoSparkConnector
+ <json:object-to-json-transformer doc:name="Object to JSON"/>
+....
+
+
+=== Code Example
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:CiscoSpark="http://www.mulesoft.org/schema/mule/CiscoSpark" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
+http://www.mulesoft.org/schema/mule/CiscoSpark http://www.mulesoft.org/schema/mule/CiscoSpark/current/mule-CiscoSpark.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
+    <CiscoSpark:config name="CiscoSpark__Configuration" authorization="Bearer ODY5MDBiYjctNDY4NS00ODI0LThhZjktNTUxMTcyNGI3OWMyZjRiNWRhM2MtZmZk" doc:name="CiscoSpark: Configuration"/>
+    <flow name="sparkcreateroomFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/" doc:name="HTTP"/>
+        <CiscoSpark:create-rooms config-ref="CiscoSpark__Configuration" doc:name="CiscoSpark">
+            <CiscoSpark:rooms-post-request title="MuleTestRoom"/>
+        </CiscoSpark:create-rooms>
+        <json:object-to-json-transformer doc:name="Object to JSON"/>
+    </flow>
+</mule>
+
+
+---
+
+=== See Also
+
+* Access the link:/release_notes.adoc
+
