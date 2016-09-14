@@ -10,9 +10,9 @@ import org.junit.experimental.categories.Category;
 import org.mule.modules.newrelic.NewRelicConnector;
 import org.mule.modules.newrelic.automation.runner.FunctionalTestSuite;
 
-import com.mule.modules.newrelic.beans.Server;
-import com.mule.modules.newrelic.beans.UpdateServerNamePutResponse;
-import com.mule.modules.newrelic.beans.UpdateServerNameRequest;
+import org.mule.modules.newrelic.bean.Server;
+import org.mule.modules.newrelic.bean.UpdateServerNamePutResponse;
+import org.mule.modules.newrelic.bean.UpdateServerNameRequest;
 
 public class UpdateServerNameTestCase extends NewRelicAbstractTestCase{
 	public UpdateServerNameTestCase() {

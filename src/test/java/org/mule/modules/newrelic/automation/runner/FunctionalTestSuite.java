@@ -10,7 +10,6 @@ import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
-import org.mule.modules.newrelic.NewRelicClient;
 import org.mule.modules.newrelic.NewRelicConnector;
 import org.mule.modules.newrelic.automation.functional.GetApplicationsTestCase;
 import org.mule.modules.newrelic.automation.functional.GetBrowserAppListTestCase;
@@ -22,8 +21,6 @@ import org.mule.modules.newrelic.automation.functional.GetUserDetailsTestCase;
 import org.mule.modules.newrelic.automation.functional.UpdateApplicationNameTestCase;
 import org.mule.modules.newrelic.automation.functional.UpdateServerNameTestCase;
 import org.mule.tools.devkit.ctf.mockup.ConnectorTestContext;
-
-import com.mule.modules.newrelic.beans.UpdateApplicationNameRequest;
 
 /*@RunWith(Categories.class)
  @IncludeCategory(FunctionalTestSuite.class)*/

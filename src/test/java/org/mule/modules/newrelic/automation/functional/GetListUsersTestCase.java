@@ -11,8 +11,7 @@ import org.junit.experimental.categories.Category;
 import org.mule.modules.newrelic.NewRelicConnector;
 import org.mule.modules.newrelic.automation.runner.FunctionalTestSuite;
 
-import com.mule.modules.newrelic.beans.ApplicationPostResponce;
-import com.mule.modules.newrelic.beans.GetUsersListResponse;
+import org.mule.modules.newrelic.bean.GetUsersListResponse;
 
 public class GetListUsersTestCase extends NewRelicAbstractTestCase{
 	public GetListUsersTestCase() {

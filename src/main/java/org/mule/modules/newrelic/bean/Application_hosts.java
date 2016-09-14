@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.mule.modules.newrelic.beans;
+package org.mule.modules.newrelic.bean;
 
 // TODO: Auto-generated Javadoc
 /**

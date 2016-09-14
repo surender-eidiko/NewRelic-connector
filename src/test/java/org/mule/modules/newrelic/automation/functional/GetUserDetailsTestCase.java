@@ -10,8 +10,7 @@ import org.junit.experimental.categories.Category;
 import org.mule.modules.newrelic.NewRelicConnector;
 import org.mule.modules.newrelic.automation.runner.FunctionalTestSuite;
 
-import com.mule.modules.newrelic.beans.ApplicationInstancesGetResponse;
-import com.mule.modules.newrelic.beans.UserDetailsGetResponse;
+import org.mule.modules.newrelic.bean.UserDetailsGetResponse;
 
 public class GetUserDetailsTestCase extends NewRelicAbstractTestCase{
 	public GetUserDetailsTestCase() {

@@ -14,19 +14,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.mule.api.annotations.param.Optional;
 import org.mule.modules.newrelic.config.ConnectorConfig;
 
-import com.mule.modules.newrelic.beans.ApplicationInstancesGetResponse;
-import com.mule.modules.newrelic.beans.ApplicationPostResponce;
-import com.mule.modules.newrelic.beans.BrowserAppListGetResponse;
-import com.mule.modules.newrelic.beans.GetUsersListResponse;
-import com.mule.modules.newrelic.beans.HostListGetResponse;
-import com.mule.modules.newrelic.beans.MetricNamesGetResponse;
-import com.mule.modules.newrelic.beans.ServerListGetResponse;
-import com.mule.modules.newrelic.beans.StatusResponse;
-import com.mule.modules.newrelic.beans.UpdateApplicationNameRequest;
-import com.mule.modules.newrelic.beans.UpdateAppplicationPutResponse;
-import com.mule.modules.newrelic.beans.UpdateServerNamePutResponse;
-import com.mule.modules.newrelic.beans.UpdateServerNameRequest;
-import com.mule.modules.newrelic.beans.UserDetailsGetResponse;
+import org.mule.modules.newrelic.bean.*;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
@@ -116,9 +104,10 @@ public class NewRelicClient {
 	    private WebResource.Builder addHeader(WebResource webResource, String token) {
 		    WebResource.Builder builder = webResource
 		      .accept(MediaType.APPLICATION_JSON);
-		    if(token == null)
-		    	token= connector.getConfig().getAuthorization();
-		    builder.header("X-Api-Key", token);
+		    String authToken = null;
+			if(token == null)
+		    	authToken = connector.getConfig().getAuthorization();
+		    builder.header("X-Api-Key", authToken);
 		    return builder;
 		  }
 
@@ -147,24 +136,6 @@ public class NewRelicClient {
 	      return statusResponse;
 	     
 	    }
-
-	  
-
-	 
-	
-	
-
-	 
-
-	  /*private WebResource.Builder addHeader(WebResource webResource) {
-	    WebResource.Builder builder = webResource
-	      .accept(MediaType.APPLICATION_JSON);
-
-	    builder.header("Authorization", connector.getConfig()
-	      .getAuthorization());
-	    return builder;
-	  }*/
-	 
 
 	  private String convertObjectToString(Object request, ObjectMapper mapper) {
 	    String input = "";
@@ -206,7 +177,6 @@ public class NewRelicClient {
 
 	public GetUsersListResponse getListUsers(String api_key,
 			String filter_userIds, String filter_Email, String page) {
-		// TODO Auto-generated method stub
 		
 		WebResource webResource = getApiResource().path("users.json");
     	
@@ -264,9 +234,8 @@ public class NewRelicClient {
 	public ApplicationInstancesGetResponse getApplicationInstanceList(
 			String api_Key, String application_id, String hostName,
 			String applicationInstanceIds, String page) {
-		// TODO Auto-generated method stub
 		WebResource webResource = getApiResource().path("applications/"+application_id+"/instances.json");
-    	System.out.println("webresource**************************"+webResource);
+    	log.info("webresource**************************"+webResource);
 	   	 MultivaluedMap<String, String> queryParams = new MultivaluedMapImpl();
 	   	   
 	   	 
@@ -297,9 +266,8 @@ public class NewRelicClient {
 
 	public ServerListGetResponse getServersList(String apikey, String name,
 			String host, String serverIdsList, String labels, String page) {
-		// TODO Auto-generated method stub
 		WebResource webResource = getApiResource().path("servers.json");
-    	//System.out.println("webresource**************************"+webResource);
+    	log.info("webresource**************************"+webResource);
 	   	 MultivaluedMap<String, String> queryParams = new MultivaluedMapImpl();
 	   	   
 	   	 
@@ -337,9 +305,8 @@ public class NewRelicClient {
 
 	public HostListGetResponse getHostList(String apikey, String applicationId,
 			String hostName, String applicationHostIds, String page) {
-		// TODO Auto-generated method stub
 		WebResource webResource = getApiResource().path("applications").path(""+applicationId+"").path("hosts.json");
-    	//System.out.println("webresource**************************"+webResource);
+    	log.info("webresource**************************"+webResource);
 	   	 MultivaluedMap<String, String> queryParams = new MultivaluedMapImpl();
 	   	   
 	   	 
@@ -367,7 +334,7 @@ public class NewRelicClient {
 			String applicationName, String appIds, String page) {
 
 		WebResource webResource = getApiResource().path("browser_applications.json");
-    	//System.out.println("webresource**************************"+webResource);
+    	log.info("webresource**************************"+webResource);
 	   	 MultivaluedMap<String, String> queryParams = new MultivaluedMapImpl();
 	   	   
 	   	 
@@ -393,7 +360,6 @@ public class NewRelicClient {
 
 	public UpdateServerNamePutResponse updateServerName(UpdateServerNameRequest requestData, String apikey,
 			String serverId) {
-		// TODO Auto-generated method stub
 		
 		    WebResource webResource = getApiResource().path("servers").path(""+serverId+".json");
 		    
@@ -410,19 +376,6 @@ public class NewRelicClient {
 	    return buildResponseObject(returnClass, clientResponse);
 	  }
 
-	  private Object postData(Object request, WebResource webResource,
-	    Class<?> returnClass, String token) {
-	    WebResource.Builder builder = addHeader(webResource, token);
-	    builder.type(MediaType.APPLICATION_JSON);
-	    ObjectMapper mapper = new ObjectMapper();
-	    String input = convertObjectToString(request, mapper);
-	   
-	    ClientResponse clientResponse = builder.post(ClientResponse.class,
-	      input);
-	 
-	    return buildResponseObject(returnClass, clientResponse);
-	  }
-
 	  private Object putData(Object request, WebResource webResource,
 	    Class<?> returnClass, String token) {
 	    WebResource.Builder builder = addHeader(webResource, token);
@@ -436,20 +389,6 @@ public class NewRelicClient {
 
 	    return buildResponseObject(returnClass, clientResponse);
 	  }
-
-	  private Object deleteData(WebResource webResource, String token) {
-	    WebResource.Builder builder = addHeader(webResource, token);
-	    ClientResponse clientResponse = builder.delete(ClientResponse.class);
-	    return buildDeleteResponseObject(clientResponse);
-	  }
-
-	  private Object buildDeleteResponseObject(ClientResponse clientResponse) {
-		    StatusResponse statusResponse = new StatusResponse();
-		    statusResponse
-		      .setStatusCode(String.valueOf(clientResponse.getStatus()));
-		    return statusResponse;
-		  }
-
 
 	public UpdateAppplicationPutResponse updateApplicationName(
 			UpdateApplicationNameRequest requestData, String apikey,

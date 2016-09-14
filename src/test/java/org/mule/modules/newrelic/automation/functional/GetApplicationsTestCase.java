@@ -5,17 +5,12 @@ package org.mule.modules.newrelic.automation.functional;
 
 import static org.junit.Assert.assertNotNull;
 
-import java.util.HashMap;
-
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.mule.modules.newrelic.NewRelicClient;
 import org.mule.modules.newrelic.NewRelicConnector;
 import org.mule.modules.newrelic.automation.runner.FunctionalTestSuite;
 
-import com.mule.modules.newrelic.beans.ApplicationPostResponce;
-
-
+import org.mule.modules.newrelic.bean.ApplicationPostResponce;
 
 public class GetApplicationsTestCase extends NewRelicAbstractTestCase{
 	public GetApplicationsTestCase() {

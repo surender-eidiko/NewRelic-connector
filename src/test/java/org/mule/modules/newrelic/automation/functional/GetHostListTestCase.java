@@ -10,8 +10,7 @@ import org.junit.experimental.categories.Category;
 import org.mule.modules.newrelic.NewRelicConnector;
 import org.mule.modules.newrelic.automation.runner.FunctionalTestSuite;
 
-import com.mule.modules.newrelic.beans.ApplicationPostResponce;
-import com.mule.modules.newrelic.beans.HostListGetResponse;
+import org.mule.modules.newrelic.bean.HostListGetResponse;
 
 public class GetHostListTestCase extends NewRelicAbstractTestCase{
 	public GetHostListTestCase() {

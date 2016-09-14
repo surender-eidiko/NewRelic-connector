@@ -9,13 +9,11 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.mule.modules.newrelic.NewRelicConnector;
 import org.mule.modules.newrelic.automation.runner.FunctionalTestSuite;
-import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
-import com.mule.modules.newrelic.beans.Application;
-import com.mule.modules.newrelic.beans.ApplicationInstancesGetResponse;
-import com.mule.modules.newrelic.beans.Settings;
-import com.mule.modules.newrelic.beans.UpdateApplicationNameRequest;
-import com.mule.modules.newrelic.beans.UpdateAppplicationPutResponse;
+import org.mule.modules.newrelic.bean.Application;
+import org.mule.modules.newrelic.bean.Settings;
+import org.mule.modules.newrelic.bean.UpdateApplicationNameRequest;
+import org.mule.modules.newrelic.bean.UpdateAppplicationPutResponse;
 
 public class UpdateApplicationNameTestCase extends NewRelicAbstractTestCase{
 	public UpdateApplicationNameTestCase() {

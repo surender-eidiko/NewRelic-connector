@@ -4,13 +4,10 @@
 package org.mule.modules.newrelic.automation.functional;
 
 import org.junit.Before;
-import org.mule.modules.newrelic.NewRelicClient;
 import org.mule.modules.newrelic.NewRelicConnector;
 import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 import org.mule.tools.devkit.ctf.mockup.ConnectorDispatcher;
 import org.mule.tools.devkit.ctf.mockup.ConnectorTestContext;
-
-import com.kenai.jnr.x86asm.Logger;
 
 public class NewRelicAbstractTestCase extends AbstractTestCase<NewRelicConnector>{
 	

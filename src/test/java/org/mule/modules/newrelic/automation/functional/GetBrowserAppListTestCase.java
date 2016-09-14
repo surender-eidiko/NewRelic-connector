@@ -10,7 +10,7 @@ import org.junit.experimental.categories.Category;
 import org.mule.modules.newrelic.NewRelicConnector;
 import org.mule.modules.newrelic.automation.runner.FunctionalTestSuite;
 
-import com.mule.modules.newrelic.beans.BrowserAppListGetResponse;
+import org.mule.modules.newrelic.bean.BrowserAppListGetResponse;
 
 public class GetBrowserAppListTestCase extends NewRelicAbstractTestCase{
 

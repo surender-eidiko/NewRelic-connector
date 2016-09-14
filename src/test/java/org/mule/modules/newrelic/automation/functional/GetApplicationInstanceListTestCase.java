@@ -10,8 +10,7 @@ import org.junit.experimental.categories.Category;
 import org.mule.modules.newrelic.NewRelicConnector;
 import org.mule.modules.newrelic.automation.runner.FunctionalTestSuite;
 
-import com.mule.modules.newrelic.beans.ApplicationInstancesGetResponse;
-import com.mule.modules.newrelic.beans.ApplicationPostResponce;
+import org.mule.modules.newrelic.bean.ApplicationInstancesGetResponse;
 
 public class GetApplicationInstanceListTestCase extends NewRelicAbstractTestCase{
 	public GetApplicationInstanceListTestCase() {

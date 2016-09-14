@@ -13,8 +13,7 @@ import org.junit.experimental.categories.Category;
 import org.mule.modules.newrelic.NewRelicConnector;
 import org.mule.modules.newrelic.automation.runner.FunctionalTestSuite;
 
-import com.mule.modules.newrelic.beans.MetricNamesGetResponse;
-import com.mule.modules.newrelic.beans.ServerListGetResponse;
+import org.mule.modules.newrelic.bean.ServerListGetResponse;
 
 public class GetServersListTestCase extends NewRelicAbstractTestCase{
 	private static final Logger log = Logger.getLogger(GetMetricNamesTestCase.class

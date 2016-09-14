@@ -11,20 +11,8 @@ import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
 import org.mule.modules.newrelic.config.ConnectorConfig;
 
-import com.mule.modules.newrelic.beans.ApplicationInstancesGetResponse;
-import com.mule.modules.newrelic.beans.ApplicationPostResponce;
-import com.mule.modules.newrelic.beans.BrowserAppListGetResponse;
-import com.mule.modules.newrelic.beans.HostListGetResponse;
-import com.mule.modules.newrelic.beans.MetricNamesGetResponse;
-import com.mule.modules.newrelic.beans.GetUsersListResponse;
-import com.mule.modules.newrelic.beans.ServerListGetResponse;
-import com.mule.modules.newrelic.beans.UpdateApplicationNameRequest;
-import com.mule.modules.newrelic.beans.UpdateAppplicationPutResponse;
-import com.mule.modules.newrelic.beans.UpdateServerNamePutResponse;
-import com.mule.modules.newrelic.beans.UpdateServerNameRequest;
-import com.mule.modules.newrelic.beans.UserDetailsGetResponse;
+import org.mule.modules.newrelic.bean.*;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class NewRelicConnector.
  */
@@ -108,7 +96,7 @@ public class NewRelicConnector {
     @Processor
     
     public ApplicationPostResponce getApplicationsService(String api_Key,@Optional String applicationName,@Optional String host,@Optional String language,@Optional String pageIndex) {
-		// TODO Auto-generated method stub
+		
     	return getClient().getApplications(api_Key, applicationName, host, language, pageIndex);
 	}
     

@@ -10,12 +10,10 @@ import java.util.logging.Logger;
 
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.mule.modules.newrelic.NewRelicClient;
 import org.mule.modules.newrelic.NewRelicConnector;
 import org.mule.modules.newrelic.automation.runner.FunctionalTestSuite;
 
-import com.mule.modules.newrelic.beans.ApplicationPostResponce;
-import com.mule.modules.newrelic.beans.MetricNamesGetResponse;
+import org.mule.modules.newrelic.bean.MetricNamesGetResponse;
 
 public class GetMetricNamesTestCase extends NewRelicAbstractTestCase {
 	private static final Logger log = Logger.getLogger(GetMetricNamesTestCase.class
