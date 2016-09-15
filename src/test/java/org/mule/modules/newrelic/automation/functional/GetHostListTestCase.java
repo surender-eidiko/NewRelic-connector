@@ -22,7 +22,6 @@ public class GetHostListTestCase extends NewRelicAbstractTestCase{
   @Category({FunctionalTestSuite.class})
   public void testFlow() throws Exception {
 	HostListGetResponse res =(getConnector().getHostList("50d21105110edbed5bc2f7c147ec2b409397312a154012d", "19072630", null, null, null));
-	System.out.println("********************************************"+res.getApplication_hosts()[0].getLinks().getApplication());
     assertNotNull(res);
   }
 }

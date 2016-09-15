@@ -64,7 +64,7 @@ public class NewRelicClient {
 
 
 
-	    public ApplicationPostResponce getApplications(String api_Key,@Optional String applicationName,@Optional String host,@Optional String language,@Optional String pageIndex)
+	    public ApplicationPostResponce getApplications(String apiKey,@Optional String applicationName,@Optional String host,@Optional String language,@Optional String pageIndex)
 	    {
 	    	
 	    	WebResource webResource = getApiResource().path("applications.json");
@@ -88,18 +88,9 @@ public class NewRelicClient {
 	    	    }
 	    	    webResource = webResource.queryParams(queryParams);
 	        return (ApplicationPostResponce) getData(webResource,
-	          ApplicationPostResponce.class, api_Key);
+	          ApplicationPostResponce.class, apiKey);
 	    	
 	    }
-	    
-	    
-	    
-	  
-	
-	
-
-	  
-	   
 
 	    private WebResource.Builder addHeader(WebResource webResource, String token) {
 		    WebResource.Builder builder = webResource
@@ -175,36 +166,18 @@ public class NewRelicClient {
 	  }
 
 
-	public GetUsersListResponse getListUsers(String api_key,
-			String filter_userIds, String filter_Email, String page) {
+	public GetUsersListResponse getListUsers(String apikey) {
 		
 		WebResource webResource = getApiResource().path("users.json");
     	
-   	 MultivaluedMap<String, String> queryParams = new MultivaluedMapImpl();
-   	    if (filter_userIds != null) {
-   	      queryParams.add("filter_userIds", filter_userIds);
-   	    }
-   	    if (filter_Email != null) {
-   	      queryParams.add("filter_Email", filter_Email);
-   	    }
-   	   
-   	    if (page != null) {
-   	      queryParams.add("page",page);
-   	    }
-   	   
-   	    webResource = webResource.queryParams(queryParams);
        return (GetUsersListResponse) getData(webResource,
-    		   GetUsersListResponse.class, api_key);
-		
-		
-		
-		
+    		   GetUsersListResponse.class, apikey);
 	}
 
 
 	//getmetric names method
 	
-	public MetricNamesGetResponse getMetricNames(String api_key,
+	public MetricNamesGetResponse getMetricNames(String apikey,
 			String applicationId, String name, String page) {
 		WebResource webResource = getApiResource().path("metrics.json");
     	
@@ -225,24 +198,16 @@ public class NewRelicClient {
 	   	   
 	   	    webResource = webResource.queryParams(queryParams);
 	       return (MetricNamesGetResponse) getData(webResource,
-	    		   MetricNamesGetResponse.class, api_key);
+	    		   MetricNamesGetResponse.class, apikey);
 	}
 
-	
-	
-
 	public ApplicationInstancesGetResponse getApplicationInstanceList(
-			String api_Key, String application_id, String hostName,
+			String apiKey, String applicationId, String hostName,
 			String applicationInstanceIds, String page) {
-		WebResource webResource = getApiResource().path("applications/"+application_id+"/instances.json");
-    	log.info("webresource**************************"+webResource);
+		WebResource webResource = getApiResource().path("applications/"+applicationId+"/instances.json");
 	   	 MultivaluedMap<String, String> queryParams = new MultivaluedMapImpl();
-	   	   
-	   	 
-	   	   
-	   	   
-	   	    if (application_id != null) {
-	   	      queryParams.add("application_id", application_id);
+	   	    if (applicationId != null) {
+	   	      queryParams.add("application_id", applicationId);
 	   	    }
 	   	    if (hostName != null) {
 	   	      queryParams.add("hostName", hostName);
@@ -260,19 +225,14 @@ public class NewRelicClient {
 	   	   
 	   	    webResource = webResource.queryParams(queryParams);
 	       return (ApplicationInstancesGetResponse) getData(webResource,
-	    		   ApplicationInstancesGetResponse.class, api_Key);
+	    		   ApplicationInstancesGetResponse.class, apiKey);
 	}
 
 
 	public ServerListGetResponse getServersList(String apikey, String name,
 			String host, String serverIdsList, String labels, String page) {
 		WebResource webResource = getApiResource().path("servers.json");
-    	log.info("webresource**************************"+webResource);
 	   	 MultivaluedMap<String, String> queryParams = new MultivaluedMapImpl();
-	   	   
-	   	 
-	   	   
-	   	   
 	   	    if (name != null) {
 	   	      queryParams.add("name", name);
 	   	    }
@@ -287,16 +247,12 @@ public class NewRelicClient {
 	   	 if(labels!=null)
 	   	   {
 		   	      queryParams.add("labels", labels);
-
 	   	   }
-	   	    
 	   	    
 	   	 if(page!=null)
 	   	   {
 		   	      queryParams.add("page", page);
-
 	   	   }
-	   	   
 	   	    webResource = webResource.queryParams(queryParams);
 	       return (ServerListGetResponse) getData(webResource,
 	    		   ServerListGetResponse.class, apikey);
@@ -306,12 +262,7 @@ public class NewRelicClient {
 	public HostListGetResponse getHostList(String apikey, String applicationId,
 			String hostName, String applicationHostIds, String page) {
 		WebResource webResource = getApiResource().path("applications").path(""+applicationId+"").path("hosts.json");
-    	log.info("webresource**************************"+webResource);
 	   	 MultivaluedMap<String, String> queryParams = new MultivaluedMapImpl();
-	   	   
-	   	 
-	   	   
-	   	   
 	   	    if (hostName != null) {
 	   	      queryParams.add("hostName", hostName);
 	   	    }
@@ -329,43 +280,16 @@ public class NewRelicClient {
 	    		   HostListGetResponse.class, apikey);
 	}
 
-
-	public BrowserAppListGetResponse getBrowserAppList(String apikey,
-			String applicationName, String appIds, String page) {
-
+	public BrowserAppListGetResponse getBrowserAppList(String apikey) {
 		WebResource webResource = getApiResource().path("browser_applications.json");
-    	log.info("webresource**************************"+webResource);
-	   	 MultivaluedMap<String, String> queryParams = new MultivaluedMapImpl();
-	   	   
-	   	 
-	   	   
-	   	   
-	   	    if (applicationName != null) {
-	   	      queryParams.add("applicationName", applicationName);
-	   	    }
-	   	    if (appIds !=null) {
-	   	      queryParams.add("appIds", appIds);
-	   	    }
-	   	    if(page!=null)
-	   	    {
-		   	      queryParams.add("page", page);
-
-	   	    }
-	   	 	   	   
-	   	    webResource = webResource.queryParams(queryParams);
 	       return (BrowserAppListGetResponse) getData(webResource,
 	    		   BrowserAppListGetResponse.class, apikey);
 	}
-
-
 	public UpdateServerNamePutResponse updateServerName(UpdateServerNameRequest requestData, String apikey,
 			String serverId) {
-		
 		    WebResource webResource = getApiResource().path("servers").path(""+serverId+".json");
-		    
 		    return (UpdateServerNamePutResponse) putData(requestData,
 		      webResource, UpdateServerNamePutResponse.class, apikey);
-	
 	}
 
 	private Object getData(WebResource webResource, Class<?> returnClass,String token) {
@@ -386,7 +310,6 @@ public class NewRelicClient {
 	    ClientResponse clientResponse = builder
 	      .put(ClientResponse.class, input);
 	    
-
 	    return buildResponseObject(returnClass, clientResponse);
 	  }
 
@@ -396,12 +319,9 @@ public class NewRelicClient {
 			
 		WebResource webResource = getApiResource().path("applications").path(""+applicationId+".json");
 		    
-		    return (UpdateAppplicationPutResponse) putData(requestData,
-		  
-		    		
+		    return (UpdateAppplicationPutResponse) putData(requestData,   		
 		    		webResource, UpdateAppplicationPutResponse.class, apikey);
 	}
-
 
 	public UserDetailsGetResponse getUserDetails(String apikey, String userId) {
 		WebResource webResource = getApiResource().path("users").path(""+userId+".json");

@@ -14,14 +14,10 @@ import org.mule.modules.newrelic.config.ConnectorConfig;
 import org.mule.modules.newrelic.bean.*;
 
 /**
- * The Class NewRelicConnector.
- */
-
-/**
- * This is Pager Duty Connector Class.
- *
+ * This is NewRelicConnector Class.
  * @author Surender
  */
+
 
 @Connector(name="new-relic", friendlyName="NewRelic")
 public class NewRelicConnector {
@@ -86,7 +82,7 @@ public class NewRelicConnector {
     /**
      * Gets the applications service.
      *
-     * @param api_Key the api_ key
+     * @param apiKey the api_ key
      * @param applicationName the application name
      * @param host the host
      * @param language the language
@@ -95,65 +91,58 @@ public class NewRelicConnector {
      */
     @Processor
     
-    public ApplicationPostResponce getApplicationsService(String api_Key,@Optional String applicationName,@Optional String host,@Optional String language,@Optional String pageIndex) {
+    public ApplicationPostResponce getApplicationsService(String apiKey,@Optional String applicationName,@Optional String host,@Optional String language,@Optional String pageIndex) {
 		
-    	return getClient().getApplications(api_Key, applicationName, host, language, pageIndex);
+    	return getClient().getApplications(apiKey, applicationName, host, language, pageIndex);
 	}
     
     
     /**
      * Gets the list users.
      *
-     * @param api_key the api_key
+     * @param apikey the api_key
      * @param filter_userIds the filter_user ids
      * @param filter_Email the filter_ email
      * @param page the page
      * @return the list users
      */
     @Processor
-    public GetUsersListResponse getListUsers(String api_key,@Optional String filter_userIds,@Optional String filter_Email,@Optional String page)
+    public GetUsersListResponse getListUsers(String apikey)
     {
     	
-    	return getClient().getListUsers( api_key, filter_userIds,filter_Email, page);
+    	return getClient().getListUsers(apikey);
     	
     }
     
     /**
      * Gets the metric names.
      *
-     * @param api_key the api_key
+     * @param apikey the api_key
      * @param applicationId the application id
      * @param applicationName the application name
      * @param page the page
      * @return the metric names
      */
     @Processor
-    public MetricNamesGetResponse getMetricNames(String api_key,String applicationId,@Optional String applicationName,@Optional String page)
+    public MetricNamesGetResponse getMetricNames(String apikey,String applicationId,@Optional String applicationName,@Optional String page)
     {
-    	
-    	return getClient().getMetricNames(api_key,applicationId,applicationName,page);
-    	
-    	
+    	return getClient().getMetricNames(apikey,applicationId,applicationName,page);
     }
-    
     
     /**
      * Gets the application instance list.
      *
-     * @param api_Key the api_ key
-     * @param application_id the application_id
+     * @param apiKey the api_ key
+     * @param applicationId the application_id
      * @param hostName the host name
      * @param applicationInstanceIds the application instance ids
      * @param page the page
      * @return the application instance list
      */
     @Processor
-    public ApplicationInstancesGetResponse getApplicationInstanceList(String api_Key,String application_id,@Optional String hostName,@Optional String applicationInstanceIds,@Optional String page)
+    public ApplicationInstancesGetResponse getApplicationInstanceList(String apiKey,String applicationId,@Optional String hostName,@Optional String applicationInstanceIds,@Optional String page)
     {
-    	return getClient().getApplicationInstanceList(api_Key,application_id,hostName,applicationInstanceIds,page);
-    	
-    	
-    	
+    	return getClient().getApplicationInstanceList(apiKey,applicationId,hostName,applicationInstanceIds,page);
     }
     
     
@@ -172,7 +161,6 @@ public class NewRelicConnector {
    public ServerListGetResponse getServersList(String apikey,@Optional String serverName,@Optional String host,@Optional String serverIdsList,@Optional String labels,String page)
   {
 	   return getClient().getServersList(apikey,serverName,host,serverIdsList,labels,page);
-	   
 	   
   }
     
@@ -205,9 +193,9 @@ public class NewRelicConnector {
     * @return the browser app list
     */
    @Processor
-    public BrowserAppListGetResponse getBrowserAppList(String apikey,@Optional String applicationName,@Optional String appIds,@Optional String page)
+    public BrowserAppListGetResponse getBrowserAppList(String apikey)
    {
-	   return getClient().getBrowserAppList(apikey,applicationName,appIds,page);
+	   return getClient().getBrowserAppList(apikey);
 	   
 	   
    }
@@ -241,7 +229,6 @@ public class NewRelicConnector {
     {
     	return getClient().updateApplicationName(requestData,apikey,applicationId);
     	
-    	
     }
     
     
@@ -255,12 +242,6 @@ public class NewRelicConnector {
     @Processor
     public UserDetailsGetResponse getUserDetails(String apikey,String userId)
     {
-    	
     	return getClient().getUserDetails(apikey,userId);
-    	
     }
-    
-    
-
-
 }

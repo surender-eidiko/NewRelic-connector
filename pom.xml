@@ -7,7 +7,7 @@
 	<artifactId>new-relic-connector</artifactId>
 	<version>1.0.0</version>
 	<packaging>mule-module</packaging>
-	<name>Mule newrelic Anypoint Connector</name>
+	<name>Mule New Relic Anypoint Connector</name>
 
 	<parent>
 		<groupId>org.mule.tools.devkit</groupId>
@@ -53,13 +53,25 @@
 			</dependency>
 
 		</dependencies>
-
 		<repositories>
-		<repository>
-			<id>mulesoft-releases</id>
-			<name>MuleSoft Releases Repository</name>
-			<url>http://repository.mulesoft.org/releases/</url>
-			<layout>default</layout>
-		</repository>
-	</repositories>
+			<repository>
+				<id>mulesoft-releases</id>
+				<name>MuleSoft Releases Repository</name>
+				<url>http://repository.mulesoft.org/releases/</url>
+				<layout>default</layout>
+			</repository>
+		</repositories>
+		<distributionManagement>
+			<repository>
+				<id>mule-ee-releases</id>
+				<name>MuleEE Releases Repository</name>
+				<url>https://repository-master.mulesoft.org/nexus/content/repositories/releases-ee/</url>
+			</repository>
+			<snapshotRepository>
+				<id>mule-ee-snapshots</id>
+				<name>MuleEE Snapshots Repository</name>
+				<url>https://repository-master.mulesoft.org/nexus/content/repositories/ci-snapshots/</url>
+				<uniqueVersion>false</uniqueVersion>
+			</snapshotRepository>
+	</distributionManagement>
 </project>

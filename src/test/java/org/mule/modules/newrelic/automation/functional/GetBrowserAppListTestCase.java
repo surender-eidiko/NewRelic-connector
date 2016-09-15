@@ -16,13 +16,11 @@ public class GetBrowserAppListTestCase extends NewRelicAbstractTestCase{
 
 	public GetBrowserAppListTestCase() {
 		super(NewRelicConnector.class);
-		// TODO Auto-generated constructor stub
 	}
 	@Test
 	  @Category({FunctionalTestSuite.class})
 	  public void testFlow() throws Exception {
-		BrowserAppListGetResponse res =(getConnector().getBrowserAppList(getKey(), null, null, null));
-		System.out.println("********************************************"+res.getBrowser_applications()[0].getBrowser_monitoring_key());
+		BrowserAppListGetResponse res =(getConnector().getBrowserAppList(getKey()));
 	    assertNotNull(res);
 	  }
 }

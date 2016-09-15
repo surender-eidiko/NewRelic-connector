@@ -22,7 +22,6 @@ public class GetApplicationInstanceListTestCase extends NewRelicAbstractTestCase
   @Category({FunctionalTestSuite.class})
   public void testFlow() throws Exception {
 	ApplicationInstancesGetResponse res =(getConnector().getApplicationInstanceList("50d21105110edbed5bc2f7c147ec2b409397312a154012d", "19072630", null,null,null));
-	System.out.println("res************************************************************"+res.getApplication_instances()[0].getApplication_name());
     assertNotNull(res);
   }
 }

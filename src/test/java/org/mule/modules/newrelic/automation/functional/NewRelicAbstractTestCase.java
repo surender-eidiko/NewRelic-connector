@@ -9,7 +9,7 @@ import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 import org.mule.tools.devkit.ctf.mockup.ConnectorDispatcher;
 import org.mule.tools.devkit.ctf.mockup.ConnectorTestContext;
 
-public class NewRelicAbstractTestCase extends AbstractTestCase<NewRelicConnector>{
+public abstract class NewRelicAbstractTestCase extends AbstractTestCase<NewRelicConnector>{
 	
 
     private NewRelicConnector connector;
@@ -52,7 +52,6 @@ public class NewRelicAbstractTestCase extends AbstractTestCase<NewRelicConnector
 		  }	
 		public String getKey()
 		{
-			
 			return "50d21105110edbed5bc2f7c147ec2b409397312a154012d";
 		}
 

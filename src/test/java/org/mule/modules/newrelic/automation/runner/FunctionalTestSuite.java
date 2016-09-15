@@ -22,8 +22,6 @@ import org.mule.modules.newrelic.automation.functional.UpdateApplicationNameTest
 import org.mule.modules.newrelic.automation.functional.UpdateServerNameTestCase;
 import org.mule.tools.devkit.ctf.mockup.ConnectorTestContext;
 
-/*@RunWith(Categories.class)
- @IncludeCategory(FunctionalTestSuite.class)*/
 @RunWith(Suite.class)
 @SuiteClasses({
 

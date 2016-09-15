@@ -24,12 +24,11 @@ public class UpdateServerNameTestCase extends NewRelicAbstractTestCase{
   @Category({FunctionalTestSuite.class})
   public void testFlow() throws Exception {
 	Server server=new Server();
-	server.setName("TestServer");
+	server.setName("TestServer123");
 	
 	UpdateServerNameRequest request=new UpdateServerNameRequest();
 	request.setServer(server);
 	UpdateServerNamePutResponse res =(getConnector().updateServerName(request, getKey(), getServerId()));
-	System.out.println("res************************************************************"+res.getServer().getName());
     assertNotNull(res);
 	
 	

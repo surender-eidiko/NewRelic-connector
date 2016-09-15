@@ -27,8 +27,6 @@ public class GetMetricNamesTestCase extends NewRelicAbstractTestCase {
   @Category({FunctionalTestSuite.class})
   public void testFlow() throws Exception {
 	 MetricNamesGetResponse res =(getConnector().getMetricNames(getKey(),"19072630", null, null));
-	 log.log(Level.INFO, "info", res);
-	 System.out.println("response ********************************************************"+res);
      assertNotNull(res);
   }
 }

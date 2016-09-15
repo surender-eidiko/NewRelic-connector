@@ -32,7 +32,7 @@ public class UpdateApplicationNameTestCase extends NewRelicAbstractTestCase{
 			
 			
 			
-	request.getApplication().setName("TestFromMule");
+	request.getApplication().setName("New Updated Name");
 	Settings settings=new Settings();
 	application.setSettings(settings);
 	application.getSettings().setApp_apdex_threshold("3.0");
@@ -42,7 +42,6 @@ public class UpdateApplicationNameTestCase extends NewRelicAbstractTestCase{
 	
 	
 	UpdateAppplicationPutResponse res =(getConnector().updateApplicationName(request, getKey(),getApplicationId() ));
-	System.out.println("res************************************************************"+res.getApplication().getName());
     assertNotNull(res);
   }
 }

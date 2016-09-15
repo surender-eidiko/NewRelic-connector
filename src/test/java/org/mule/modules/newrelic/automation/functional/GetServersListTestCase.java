@@ -27,8 +27,6 @@ public class GetServersListTestCase extends NewRelicAbstractTestCase{
   @Category({FunctionalTestSuite.class})
   public void testFlow() throws Exception {
 	 ServerListGetResponse res =(getConnector().getServersList("50d21105110edbed5bc2f7c147ec2b409397312a154012d", null, null, null, null, null));
-	 log.log(Level.INFO, "info", res);
-	 System.out.println("response ********************************************************"+res.getServers()[0].getAccount_id());
      assertNotNull(res);
   }
 }

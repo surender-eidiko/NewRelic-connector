@@ -22,7 +22,6 @@ public class GetUserDetailsTestCase extends NewRelicAbstractTestCase{
   @Category({FunctionalTestSuite.class})
   public void testFlow() throws Exception {
 	UserDetailsGetResponse res =(getConnector().getUserDetails(getKey(),getUserId()));
-	System.out.println("res************************************************************"+res.getUser().getEmail());
     assertNotNull(res);
   }
 }
