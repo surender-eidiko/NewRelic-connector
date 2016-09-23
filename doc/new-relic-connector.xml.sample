@@ -1,3 +1,0 @@
-<!-- BEGIN_INCLUDE(new-relic:greet) -->
-    <new-relic:greet config-ref="" friend="#[map-payload:friend]" />
-<!-- END_INCLUDE(new-relic:greet) -->

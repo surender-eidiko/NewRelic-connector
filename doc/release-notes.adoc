@@ -8,7 +8,8 @@
 
 The NewRelic connector facilitates connections between Mule integration and NewRelic applications. The NewRelic connector  provides to know the applicationlist,application metrics,server list,server metrics associated to a particular account etc.
 
-*Guide:* <Connector_Guide_Link>
+*Guide:* link:/NewRelic-connector/doc/user-manual.adoc[Link to User Manual]
+		 
 ////
 Points to the docs.mulesoft pages for documentation on the functional aspects of the connector. e.g.: link:/mule-user-guide/v/3.7/microsoft-sharepoint-2013-connector[Microsoft SharePoint 2013 Connector]
 ////

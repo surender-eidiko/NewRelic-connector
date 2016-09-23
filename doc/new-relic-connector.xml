@@ -1,0 +1,49 @@
+<!-- BEGIN_INCLUDE(new-relic:greet) -->
+    <new-relic:greet config-ref="" friend="#[map-payload:friend]" />
+<!-- END_INCLUDE(new-relic:greet) -->
+
+<!-- BEGIN_INCLUDE(new-relic:get-user-detailst) -->
+	<new-relic:get-user-details config-ref="NewRelic__Configuration" apikey="50d21105110edbed5bc2f7c147ec2b409397312a154012d" userId="1643720" doc:name="NewRelic"/>
+<!-- END_INCLUDE(new-relic:get-user-details) -->
+
+<!-- BEGIN_INCLUDE(new-relic:get-application-instance-list) -->
+	<new-relic:get-application-instance-list config-ref="NewRelic__Configuration"   doc:name="NewRelic" api_Key="50d21105110edbed5bc2f7c147ec2b409397312a154012d" application_id="19072630"/>
+<!-- END_INCLUDE(new-relic:get-application-instance-list) -->
+
+<!-- BEGIN_INCLUDE(new-relic:get-applications-service) -->
+		<new-relic:get-applications-service config-ref="NewRelic__Configuration"   doc:name="NewRelic" api_Key="50d21105110edbed5bc2f7c147ec2b409397312a154012d" />
+<!-- END_INCLUDE(new-relic:get-applications-service) -->
+
+<!-- BEGIN_INCLUDE(new-relic:get-browser-app-list) -->
+		<new-relic:get-browser-app-list config-ref="NewRelic__Configuration"   doc:name="NewRelic" apikey="50d21105110edbed5bc2f7c147ec2b409397312a154012d"/>
+<!-- END_INCLUDE(new-relic:get-browser-app-list) -->
+
+<!-- BEGIN_INCLUDE(new-relic:get-host-list) -->
+	<new-relic:get-host-list config-ref="NewRelic__Configuration"   doc:name="NewRelic" apikey="50d21105110edbed5bc2f7c147ec2b409397312a154012d" applicationId="19072630"/>
+<!-- END_INCLUDE(new-relic:get-host-list) -->
+
+
+<!-- BEGIN_INCLUDE(new-relic:get-list-users) -->
+	<new-relic:get-list-users config-ref="NewRelic__Configuration"   doc:name="NewRelic" api_key="50d21105110edbed5bc2f7c147ec2b409397312a154012d"/>
+<!-- END_INCLUDE(new-relic:get-list-users) -->
+
+<!-- BEGIN_INCLUDE(new-relic:get-metric-names) -->
+	<new-relic:get-metric-names config-ref="NewRelic__Configuration"   doc:name="NewRelic" api_key="50d21105110edbed5bc2f7c147ec2b409397312a154012d" applicationId="19072630"/>
+<!-- END_INCLUDE(new-relic:get-metric-names) -->
+
+
+<!-- BEGIN_INCLUDE(new-relic:update-server-name) -->
+ <new-relic:update-server-name config-ref="NewRelic__Configuration"   doc:name="NewRelic"   apikey="50d21105110edbed5bc2f7c147ec2b409397312a154012d" serverId="19082080">
+            <new-relic:request-data>
+                <new-relic:server name="TestServer"/>
+            </new-relic:request-data>
+        </new-relic:update-server-name>
+<!-- END_INCLUDE(new-relic:update-server-name) -->
+
+<!-- BEGIN_INCLUDE(new-relic:get-servers-list) -->
+
+ <new-relic:get-servers-list config-ref="NewRelic__Configuration"   doc:name="NewRelic"   apikey="50d21105110edbed5bc2f7c147ec2b409397312a154012d" page="1">
+        </new-relic:get-servers-list>
+        <json:object-to-json-transformer doc:name="Object to JSON"/>
+<!-- END_INCLUDE(new-relic:get-servers-list) -->
+
